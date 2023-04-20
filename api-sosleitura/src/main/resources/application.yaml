@@ -1,0 +1,36 @@
+server:
+  servlet:
+   context-path: /sosleitura
+spring:
+  devtools:
+    restart:
+      log-condition-evaluation-delta: false
+  datasource: #database
+    url: jdbc:mysql://127.0.0.1:8585/livraria
+    username: jefferson
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: validate
+  #sql:
+    #init:
+      #mode: always
+  flyway: #flyway versionamento
+    url: jdbc:mysql://127.0.0.1:8585/livraria
+    user: jefferson
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mail: #email config
+    host: smtp.gmail.com
+    port: 587
+    username: sosleitura6@gmail.com
+    password: xvtsbhasltapifyz
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
