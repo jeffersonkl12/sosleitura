@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+}
+
+/*color*/
+:root{
+    --red: #e32636;
+    --cinza: #C0C0C0;
+    --cinza-escuro: #778899;
+    --laranja: #f28500;
+}
+
+/* layout */
+.flex{
+    display: flex;
+}
+
+.f-jc-c{
+    justify-content: center;
+}
+
+.f-jc-sa{
+    justify-content: space-around;
+}
+
+.f-jc-sb{
+    justify-content: space-between;
+}
+
+.f-jc-se{
+    justify-content: space-evenly;
+}
+
+.f-ai-c{
+    align-items: center;
+}
+
+.f-ai-fs{
+    align-items: flex-start;
+}
+
+.f-ai-fe{
+    align-items: flex-end;
+}
