@@ -59,41 +59,8 @@
 }
 
 .pesquisa__form{
-    width: 50%;
+    width: 40%;
     margin: auto;
-}
-
-.pesquisa__icon{
-    width: 80px;
-
-    background-color: white;
-    cursor: pointer;
-    transition: all ease-in 0.2s;
-}
-
-.pesquisa__icon:hover{
-    background-color: var(--red);
-}
-
-.pesquisa__icon:hover *{
-    color: white;
-}
-
-.pesquisa__icon-item{
-    width: 50px;
-    margin-left: 20px;
-
-    transition: all ease-in 0.2s;
-}
-.pesquisa__icon-item:hover{
-    transform-origin: center;
-    transform: rotate(180deg);
-    cursor: pointer;
-}
-
-.pesquisa__icon-item:hover *{
-    font-size: 40px;
-    color: "red";
 }
 
 .icon__lista li:last-of-type{
@@ -108,7 +75,7 @@
 
    .header__nav{
         display: none;
-        width: 73%;
+        width: 100%;
         height: max-content;
 
         left: 50%;
@@ -160,15 +127,19 @@
 
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 1200px) {
     .pesquisa__form{
-        width: 80%;
+        width: 60%;
     }
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 640px){
 
     .header__icon .icon__lista li:first-of-type{
+        display: none;
+    }
+
+    .header__pesquisa{
         display: none;
     }
 }

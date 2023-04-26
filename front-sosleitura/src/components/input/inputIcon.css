@@ -2,7 +2,9 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-}
+
+    width: 100%;
+}   
 
 .inputIcon__container.secondary  .pesquisa__icon{
     border: 1px solid var(--cinza);

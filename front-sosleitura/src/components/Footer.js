@@ -26,6 +26,8 @@ export default function Footer() {
               <InputIcon
                 placeholder={"digite seu email..."}
                 secondary={true}
+                border={true}
+                padding={9}
                 icon={ArrowForwardIcon}
                 type={"email"}
               />

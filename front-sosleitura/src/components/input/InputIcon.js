@@ -3,25 +3,26 @@ import "./inputIcon.css";
 import styled from "@emotion/styled";
 
 const InputIconField = styled("div", {
-  shouldForwardProp: (prop) => prop !== "primary" && prop !== "secondary",
-})(({ primary, secondary, theme }) => ({
+  shouldForwardProp: (prop) => prop !== "primary" && prop !== "secondary" && prop !== "border",
+})(({ primary, secondary, theme, padding, border }) => ({
   "& .MuiInputBase-root": {
+    backgroundColor: "white",
     borderRadius: "0"
   },
   "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
-    padding: "9px",
+    padding: padding ? padding+"px": null,
   },
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
-      border: secondary ? "none": "1px solid black",
-      borderColor:  theme.palette.primary.cinza,
+      border: border ? "1px solid black": "none",
+      borderColor:  secondary ? theme.palette.primary.cinza: "none",
       borderRadius: "0"
     },
     "&:hover fieldset": {
-      borderColor: theme.palette.primary.cinza,
+      borderColor: secondary ? theme.palette.primary.cinza: "none",
     },
     "&.Mui-focused fieldset": {
-      borderColor: theme.palette.primary.cinza,
+      borderColor: secondary ? theme.palette.primary.cinza: "none",
     },
   },
 }));
@@ -35,10 +36,15 @@ const iconSx = {
     },
 }
 
-export default function InputIcon({ placeholder, secondary, icon, type }) {
+export default function InputIcon({ placeholder, primary , secondary, icon, type,padding, border }) {
   const Icon = icon;
   return (
-    <InputIconField className={`inputIcon__container ${secondary ? " secondary": ""}`}>
+    <InputIconField className={`inputIcon__container ${secondary ? " secondary": ""}`} 
+    border={border}
+    padding={padding}
+    primary={primary}
+    secondary={secondary}
+    >
       <TextField type={type} placeholder={placeholder} fullWidth={true}/>
       <div className="pesquisa__icon flex f-jc-c f-ai-c">
         <Icon sx={iconSx}/>

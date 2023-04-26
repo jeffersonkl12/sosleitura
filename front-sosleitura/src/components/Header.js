@@ -8,6 +8,7 @@ import { TextField } from "@mui/material";
 import styled from "@emotion/styled";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useState, useEffect } from "react";
+import InputIcon from "./input/InputIcon";
 
 const IconClose = styled(CloseIcon)(() => ({
     color: "white",
@@ -115,26 +116,7 @@ function Header() {
                 <div className="header__pesquisa">
                     <form className="pesquisa__form" action="#">
                         <div className="pesquisa__field flex">
-                            <TextField
-                                fullWidth
-                                label=""
-                                id="fullWidth"
-                                placeholder="digite a pesquissa.."
-                                sx={{
-                                    backgroundColor: "white",
-                                    "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
-                                        border: "none",
-                                    },
-                                }}
-                                inputProps={{
-                                    style: {
-                                        fontSize: "20px",
-                                    },
-                                }}
-                            />
-                            <div className="pesquisa__icon flex f-ai-c f-jc-c">
-                                <IconSearch fontSize="large" />
-                            </div>
+                            <InputIcon icon={IconSearch} placeholder={"digite a pesquisar..."}/>
                             <div className="pesquisa__icon-item flex f-ai-c f-jc-c">
                                 <IconClose
                                     onClick={() => clickBarraPesquisa(false)}
