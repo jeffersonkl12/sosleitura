@@ -2,7 +2,11 @@
     position: relative;
 }
 .hedaer__container{
-    padding: 70px 20px;
+    width: 80%;
+
+    padding: 70px 0;
+    margin: auto;
+
     position: relative;
 }
 
@@ -99,7 +103,7 @@
 @media screen and (max-width: 1020px){
 
     .hedaer__container{
-        justify-content: space-around;
+        justify-content: space-between;
     }
 
    .header__nav{

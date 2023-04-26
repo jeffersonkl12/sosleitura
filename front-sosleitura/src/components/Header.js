@@ -62,7 +62,7 @@ function Header() {
 
     return (
         <header id="header">
-            <div className="hedaer__container flex f-jc-se f-ai-c">
+            <div className="hedaer__container flex f-jc-sb f-ai-c">
                 <h1 className="header__logo">SOSLEITURA</h1>
                 <nav
                     className={`header__nav${headerMobile ? " ativado" : ""} nav-lista`}

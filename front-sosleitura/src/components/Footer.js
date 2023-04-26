@@ -71,7 +71,7 @@ export default function Footer() {
         </div>
         <div className="footer__down-content">
           <div className="down-content__direitos">
-            <p>2023 - Todos Direitos Reservados</p>
+            <p>&copy; 2023 - Todos Direitos Reservados</p>
           </div>
           <div className="down-content__lista-link">
             <ul className="lista-link__content flex f-ai-c">
