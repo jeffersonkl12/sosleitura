@@ -53,7 +53,7 @@ public class LivroController {
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteLivro(@PathVariable(name = "id") Integer id){
         service.deletaLivro(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 
 }

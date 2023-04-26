@@ -54,6 +54,6 @@ public class UsuarioController {
     @RequestMapping(path = "/{id}",method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteUsuario(@PathVariable(name = "id") Integer id){
         service.deletaUsuario(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 }

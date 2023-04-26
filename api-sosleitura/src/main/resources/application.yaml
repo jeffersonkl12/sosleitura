@@ -6,7 +6,7 @@ spring:
     restart:
       log-condition-evaluation-delta: false
   datasource: #database
-    url: jdbc:mysql://127.0.0.1:8585/livraria
+    url: jdbc:mysql://127.0.0.1:3306/livraria
     username: jefferson
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -18,7 +18,7 @@ spring:
     #init:
       #mode: always
   flyway: #flyway versionamento
-    url: jdbc:mysql://127.0.0.1:8585/livraria
+    url: jdbc:mysql://127.0.0.1:3306/livraria
     user: jefferson
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver

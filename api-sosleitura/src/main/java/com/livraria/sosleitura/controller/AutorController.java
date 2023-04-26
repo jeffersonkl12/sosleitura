@@ -50,6 +50,6 @@ public class AutorController {
     @RequestMapping(path = "/{id}",method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteAutor(@PathVariable(name = "id") Integer id){
         service.deletaAutor(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 }

@@ -53,6 +53,6 @@ public class EnderecoController {
     @RequestMapping(path = "/{id}",method = RequestMethod.DELETE)
     public ResponseEntity<?> salvaEndereco(@PathVariable(name="id") Integer id){
         service.deletaEndereco(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 }

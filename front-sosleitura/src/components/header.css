@@ -92,6 +92,10 @@
     color: "red";
 }
 
+.icon__lista li:last-of-type{
+    display: none;
+}
+
 @media screen and (max-width: 1020px){
 
     .hedaer__container{
@@ -99,7 +103,8 @@
     }
 
    .header__nav{
-        width: 63%;
+        display: none;
+        width: 73%;
         height: max-content;
 
         left: 50%;
@@ -108,6 +113,12 @@
         background-color: #2d394b;
         transform: translateX(-50%);
         position: absolute;
+
+        z-index: 1;
+    }
+
+    .header__nav.ativado{
+        display: block;
     }
 
     .lista__container{
@@ -139,4 +150,21 @@
         display: none;
     }
 
+    .icon__lista li:last-of-type{
+        display: block;
+    }
+
+}
+
+@media screen and (max-width: 980px) {
+    .pesquisa__form{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 600px){
+
+    .header__icon .icon__lista li:first-of-type{
+        display: none;
+    }
 }

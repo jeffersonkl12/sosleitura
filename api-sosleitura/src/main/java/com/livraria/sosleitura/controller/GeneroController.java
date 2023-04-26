@@ -53,7 +53,7 @@ public class GeneroController {
     @RequestMapping(path = "/{id}",method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteGenero(@PathVariable(name = "id") Integer id, @RequestBody Genero novo){
         service.deletaGenero(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 
 }

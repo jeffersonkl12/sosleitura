@@ -54,6 +54,6 @@ public class PedidoItemController {
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deletePedidoItem(@PathVariable(name = "id") Integer id){
         service.deletaPedidoItem(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 }
