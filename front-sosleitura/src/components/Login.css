@@ -1,0 +1,56 @@
+.form__container{
+    height: 65vh;
+    min-height: max-content;
+
+    background-image: url("../../public/img/pattern.png");
+    border: 1px solid transparent;
+    padding: 60px;
+}
+
+.form__content{
+    width: 350px;
+    min-height: 400px;
+    margin: auto; 
+}
+
+.form__titulo > h2{
+    font-size: 32px;
+    cursor: pointer;
+    transition: all 0.2 ease-in;
+}
+
+.form__titulo > h2.ativado{
+    color: var(--laranja);
+}
+
+.form__titulo > h2:hover{
+    color: var(--laranja);
+}
+
+.form__field{
+    margin-top: 50px;
+}
+
+.form__field > *:not(:first-child){
+    margin-top: 20px;
+}
+
+.form__check-field{
+    margin-top: 15px;
+}
+
+.check-field__link{
+    color: var(--laranja);
+    cursor: pointer;
+}
+
+.check-field__link:hover{
+    color: black;
+}
+
+.form___button-login{
+    margin-top: 30px;
+}
+
+
+

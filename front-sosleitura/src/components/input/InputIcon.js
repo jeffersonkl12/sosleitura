@@ -3,11 +3,12 @@ import "./inputIcon.css";
 import styled from "@emotion/styled";
 
 const InputIconField = styled("div", {
-  shouldForwardProp: (prop) => prop !== "primary" && prop !== "secondary" && prop !== "border",
-})(({ primary, secondary, theme, padding, border }) => ({
-  "& .MuiInputBase-root": {
+  shouldForwardProp: (prop) => prop !== "primary" && prop !== "secondary" && prop !== "border" && prop !== "fontSize" && prop !== "padding",
+})(({ primary, secondary, theme, padding, border, fontSize }) => ({
+
+   "& .MuiInputBase-root": {
     backgroundColor: "white",
-    borderRadius: "0"
+    borderRadius: "0",
   },
   "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
     padding: padding ? padding+"px": null,
@@ -36,7 +37,7 @@ const iconSx = {
     },
 }
 
-export default function InputIcon({ placeholder, primary , secondary, icon, type,padding, border }) {
+export default function InputIcon({ placeholder, primary , secondary, icon, type,padding, border,fontSize }) {
   const Icon = icon;
   return (
     <InputIconField className={`inputIcon__container ${secondary ? " secondary": ""}`} 

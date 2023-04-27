@@ -116,7 +116,7 @@ function Header() {
                 <div className="header__pesquisa">
                     <form className="pesquisa__form" action="#">
                         <div className="pesquisa__field flex">
-                            <InputIcon icon={IconSearch} placeholder={"digite a pesquisar..."}/>
+                            <InputIcon icon={IconSearch} placeholder={"digite a pesquisar..."} fontSize={50}/>
                             <div className="pesquisa__icon-item flex f-ai-c f-jc-c">
                                 <IconClose
                                     onClick={() => clickBarraPesquisa(false)}

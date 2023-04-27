@@ -6,6 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class UserDetailsCustom implements UserDetails {
@@ -49,6 +50,6 @@ public class UserDetailsCustom implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return !usuario.getStatusUser().getStatus().equalsIgnoreCase("novo");
     }
 }
