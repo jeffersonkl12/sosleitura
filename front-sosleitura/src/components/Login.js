@@ -1,4 +1,4 @@
-import { Form} from "react-router-dom";
+import { Form, redirect} from "react-router-dom";
 import "./Login.css";
 import {
   Button,
@@ -39,7 +39,7 @@ export default function Login() {
   return (
     <div className="form__container flex f-jc-c f-ai-c">
       <div className="form__content">
-        <Form method="POST" action="/login">
+        <Form method="POST" action= "/cadastro">
           <div>
             <div className="form__titulo f-jc-se flex f-ai-c">
               <h2 className={`${selectLogin ? "ativado" : ""}`} onClick={()=>clickChangeLogin(true)}>Login</h2>
@@ -85,18 +85,21 @@ export default function Login() {
                 <div className="form__field">
                   <InputField
                     type="text"
+                    name="nome"
                     placeholder="Nome..."
                     fullWidth={true}
                     variant="standard"
                   />
                   <InputField
                     type="email"
+                    name="login"
                     placeholder="Email..."
                     fullWidth={true}
                     variant="standard"
                   />
                   <InputField
                     type="password"
+                    name="password"
                     placeholder="Senha..."
                     fullWidth={true}
                     variant="standard"
@@ -111,7 +114,7 @@ export default function Login() {
                   </FormGroup>
                 </div>
                 <div className="form___button-login flex f-jc-c">
-                  <ButtonLogin variant="outlined" size="large">
+                  <ButtonLogin variant="outlined" size="large" type="submit">
                     CADASTRAR
                   </ButtonLogin>
                 </div>
@@ -124,22 +127,24 @@ export default function Login() {
   );
 }
 
-export async function postCadastroAction({request}){
-  var data = await request.formData();
+
+
+export async function handleLoginAction({request}){
+  const data = await request.formData();
 
   const login = data.get("login");
   const password = data.get("password");
+  const nome = data.get("nome");
 
-  const campos = JSON.stringify({
-    login: login,
-    password: password
-  });
-  
-  var header = new Headers();
-  header.set("Content-Type","application/json");
+  const url = new URL(request.url);
 
-  var response = (await fetch("http://localhost:8080/sosleitura/cadastro",{method: "POST",
-  headers: header,body:campos}));
-  
+  if(url.pathname.includes("cadastro")){
+    var response = (await fetch(`http://localhost:8080/sosleitura/cadastro?nome=${nome}&login=${login}&password=${password}`,{method: "POST"}));
+  }else {
+    var response = (await fetch(`http://localhost:8080/sosleitura/login?&login=${login}&password=${password}`,{method: "POST"}));
+  }
+
+ 
+  //return redirect("/login");
   return null;
 }

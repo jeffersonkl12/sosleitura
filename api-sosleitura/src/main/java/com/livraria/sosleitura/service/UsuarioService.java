@@ -46,5 +46,7 @@ public class UsuarioService {
     public Usuario buscaUsuarioByLogin(String login){
         return repository.findByLogin(login).orElseThrow(()->{throw new NoSuchElementException("usuario nao encontrado");});
     }
-
+    public Usuario buscaUsuarioByPassword(String password){
+        return repository.findBySenha(password).orElseThrow(()->{throw new NoSuchElementException("senha invalida");});
+    }
 }

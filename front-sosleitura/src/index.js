@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider,createBrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import Login,{postCadastroAction as loginAction} from './components/Login';
+import Login,{handleLoginAction as loginAction} from './components/Login';
 
 
 const router = createBrowserRouter([
@@ -13,6 +13,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/login",
+        element: <Login/>,
+        action: loginAction,
+      },
+      {
+        path: "/cadastro",
         element: <Login/>,
         action: loginAction,
       }

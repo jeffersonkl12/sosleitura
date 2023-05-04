@@ -2,12 +2,14 @@ package com.livraria.sosleitura.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
-
+@NoArgsConstructor
 @Data
 @Entity
 public class Usuario {
@@ -30,11 +32,11 @@ public class Usuario {
     @JoinColumn(name = "endereco")
     private Endereco endereco;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_role",
     joinColumns = @JoinColumn(name = "usuario"),
     inverseJoinColumns = @JoinColumn(name = "role"))
-    private List<Role> roles;
+    private List<Role> roles = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "usuario")
     @ToString.Exclude
