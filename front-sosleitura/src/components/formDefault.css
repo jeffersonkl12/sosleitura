@@ -13,22 +13,53 @@
     margin: auto; 
 }
 
-.form__titulo > h2{
+.form__titulo  h2{
     font-size: 32px;
     cursor: pointer;
     transition: all 0.2 ease-in;
 }
 
-.form__titulo > h2.ativado{
+.form__titulo  h2.ativado a{
     color: var(--laranja);
 }
 
-.form__titulo > h2:hover{
+.form__titulo h2:hover,.form__titulo a:hover{
     color: var(--laranja);
+}
+
+.form__titulo a{
+    color: black;
+    text-decoration: none;
+}
+
+.form__login{
+    position: relative;
+}
+
+.form__sp{
+
+}
+
+.form__error{
+    width: max-content;
+    
+    margin: auto;
+
+    border-radius: 15px;
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+
+    top: 0px;
+}
+
+.form__sp{
+    height: 60px;
 }
 
 .form__field{
-    margin-top: 50px;
+    /* margin-top: 50px; */
+
 }
 
 .form__field > *:not(:first-child){
@@ -42,6 +73,7 @@
 .check-field__link{
     color: var(--laranja);
     cursor: pointer;
+    text-decoration: none;
 }
 
 .check-field__link:hover{
@@ -51,6 +83,5 @@
 .form___button-login{
     margin-top: 30px;
 }
-
 
 

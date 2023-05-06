@@ -45,15 +45,16 @@ public class HomeControllerTest {
     @DisplayName(value = "teste login")
     @Test
     public void testLogin() throws Exception {
-     String header =  mockMvc.perform(MockMvcRequestBuilders
-                .post("http://localhost:8080/sosleitura/login")
+     int status =  mockMvc.perform(MockMvcRequestBuilders
+                .post("http://localhost:8080/sosleitura/home/login")
                 .contextPath("/sosleitura")
                 .param("login","jeffersonkl99@gmail.com")
-                .param("password","1234"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andReturn().getResponse().getHeader(HttpHeaders.AUTHORIZATION);
+                .param("password","123"))
+                .andExpect(MockMvcResultMatchers.status().isUnauthorized())
+                .andReturn().getResponse().getStatus();
 
-        Assertions.assertNotNull(header);
-        System.out.println(header);
+     Assertions.assertNotNull(status);
+     System.out.println(status);
+
     }
 }

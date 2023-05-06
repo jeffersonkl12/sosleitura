@@ -1,14 +1,10 @@
 package com.livraria.sosleitura.service;
 
 import com.livraria.sosleitura.model.JwtConstants;
-import com.livraria.sosleitura.model.Usuario;
-import com.livraria.sosleitura.security.UserDetailsCustom;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import jakarta.persistence.Access;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

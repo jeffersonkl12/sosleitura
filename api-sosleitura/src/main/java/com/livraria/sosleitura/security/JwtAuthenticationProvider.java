@@ -1,7 +1,5 @@
 package com.livraria.sosleitura.security;
 
-import com.livraria.sosleitura.model.Usuario;
-import com.livraria.sosleitura.repository.UsuarioRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;

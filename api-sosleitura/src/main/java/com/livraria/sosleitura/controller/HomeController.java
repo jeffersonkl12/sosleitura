@@ -1,5 +1,6 @@
 package com.livraria.sosleitura.controller;
 
+import com.livraria.sosleitura.error.CadastroException;
 import com.livraria.sosleitura.event.UserCadastroEvent;
 import com.livraria.sosleitura.model.Role;
 import com.livraria.sosleitura.model.StatusUser;
@@ -9,21 +10,17 @@ import com.livraria.sosleitura.security.UserDetailsCustom;
 import com.livraria.sosleitura.service.JwtService;
 import com.livraria.sosleitura.service.UsuarioService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import javax.security.auth.login.LoginException;
 import java.util.HashMap;
 
 @CrossOrigin
@@ -43,13 +40,13 @@ public class HomeController {
     private ApplicationEventPublisher applicationEventPublisher;
     @Autowired
     private AuthenticationManager authenticationManager;
-    @RequestMapping(method = RequestMethod.POST, path = "cadastro" ,params = {"login","password","nome"})
+    @RequestMapping(method = RequestMethod.POST, path = "/cadastro" ,params = {"login","password","nome"})
     public ResponseEntity<?> cadastroUsuario(@RequestParam(name = "login") String login,
                                              @RequestParam(name = "password") String password,
                                              @RequestParam(name = "nome") String nome) throws Exception {
 
         if(usuarioService.testeLoginExists(login)){
-            throw new Exception("entidade existente!");
+            throw new CadastroException("entidade existente!");
         }else{
             Usuario usuario = new Usuario();
             Role role = roleRepository.findByNome("USUARIO");
@@ -67,17 +64,20 @@ public class HomeController {
 
         return ResponseEntity.ok().build();
     }
-    @RequestMapping(method = RequestMethod.POST, path = "login", params = {"login","password"})
+    @RequestMapping(method = RequestMethod.POST, path = "/login", params = {"login","password"})
     public ResponseEntity<?> loginUsuario(@RequestParam(name = "login") String login,
                                           @RequestParam(name = "password") String password) throws Exception {
+            try {
+                Usuario usuario = usuarioService.buscaUsuarioByLogin(login);
 
-            Usuario usuario = usuarioService.buscaUsuarioByLogin(login);
+                authenticationManager.authenticate(
+                        new UsernamePasswordAuthenticationToken(new UserDetailsCustom(usuario), password));
 
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(new UserDetailsCustom(usuario), password));
-
-
-            String token = jwtService.codeJwtToken(new HashMap<>(),usuario.getLogin());
-            return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION,token).build();
+                String token = jwtService.codeJwtToken(new HashMap<>(), usuario.getLogin());
+                log.info("testando login");
+                return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, token).build();
+            }catch (AuthenticationException ex){
+                throw new LoginException("login invalido");
+            }
     }
 }

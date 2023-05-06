@@ -3,7 +3,14 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider,createBrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import Login,{handleLoginAction as loginAction} from './components/Login';
+import {handleLoginAction as loginAction} from './components/LoginField';
+import LoginErrorHandler from './components/error/LoginErrorHandler';
+import {handleCadastroAction as cadastroAction} from './components/CadastroField';
+import CadastroErrorHandler from './components/error/CadastroErrorHandle';
+import FormContainer from './components/FormContainer';
+import LoginField from './components/LoginField';
+import CadastroField from './components/CadastroField';
+
 
 
 const router = createBrowserRouter([
@@ -12,14 +19,22 @@ const router = createBrowserRouter([
     element: <App/>,
     children: [
       {
-        path: "/login",
-        element: <Login/>,
-        action: loginAction,
-      },
-      {
-        path: "/cadastro",
-        element: <Login/>,
-        action: loginAction,
+        path: "/",
+        element: <FormContainer/>,
+        children: [
+          {
+            path: "/login",
+            element: <LoginField/>,
+            action: loginAction,
+            errorElement: <LoginErrorHandler/>,
+          },
+          {
+            path: "/cadastro",
+            element: <CadastroField/>,
+            action: cadastroAction,
+            errorElement: <CadastroErrorHandler/>
+          }
+        ]
       }
     ]
   }
