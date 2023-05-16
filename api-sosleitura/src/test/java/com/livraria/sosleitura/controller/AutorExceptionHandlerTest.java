@@ -19,7 +19,7 @@ public class AutorExceptionHandlerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void testNOsuchElementAutorTest() throws Exception {
+    public void NosuchElementAutorTest() throws Exception {
       String response = mockMvc.perform(MockMvcRequestBuilders
                 .get("http://localhost:8080/sosleitura/api/v1/autor/1")
                 .contextPath("/sosleitura"))

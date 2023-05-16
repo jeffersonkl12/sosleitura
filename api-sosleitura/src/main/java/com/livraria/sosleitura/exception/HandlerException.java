@@ -1,6 +1,7 @@
 package com.livraria.sosleitura.exception;
 
 import com.livraria.sosleitura.error.CadastroException;
+import com.livraria.sosleitura.error.TokenRefreshNotValidException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,11 @@ public class HandlerException extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {CadastroException.class})
     public ResponseEntity<?> handlerCadastroException(CadastroException ex, WebRequest request){
         ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST,"cadastro invalido",LocalDateTime.now(),ex.getLocalizedMessage(),null);
+        return super.handleExceptionInternal(ex,apiError,new HttpHeaders(),HttpStatus.BAD_REQUEST,request);
+    }
+    @ExceptionHandler(value = {TokenRefreshNotValidException.class})
+    public ResponseEntity<?> handlerTokenRefreshNotValid(TokenRefreshNotValidException ex, WebRequest request){
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST,"token mal formatado",LocalDateTime.now(),ex.getLocalizedMessage(),null);
         return super.handleExceptionInternal(ex,apiError,new HttpHeaders(),HttpStatus.BAD_REQUEST,request);
     }
 }

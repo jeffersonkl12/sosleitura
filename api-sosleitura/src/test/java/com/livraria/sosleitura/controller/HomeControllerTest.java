@@ -25,7 +25,7 @@ public class HomeControllerTest {
     @Test
     public void cadastroUsuarioTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
-                .post("http://localhost:8080/sosleitura/cadastro")
+                .post("http://localhost:8080/sosleitura/home/cadastro")
                 .contextPath("/sosleitura")
                 .param("login","jeffersonkl99@gmail.com")
                 .param("password","1234")
@@ -34,24 +34,24 @@ public class HomeControllerTest {
     }
 
     @Test
-    public void testeValidaEmail() throws Exception {
+    public void validaEmailTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                 .get("http://localhost:8080/sosleitura/ativa-email")
                 .contextPath("/sosleitura")
-                .param("token","e88df343-cc7f-4ba0-87a4-66430c68fb90"))
+                .param("token","e08689b2-c73b-4e44-8553-f59a0b8f1447"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
 
     }
     @DisplayName(value = "teste login")
     @Test
     public void testLogin() throws Exception {
-     int status =  mockMvc.perform(MockMvcRequestBuilders
+     String status =  mockMvc.perform(MockMvcRequestBuilders
                 .post("http://localhost:8080/sosleitura/home/login")
                 .contextPath("/sosleitura")
                 .param("login","jeffersonkl99@gmail.com")
-                .param("password","123"))
-                .andExpect(MockMvcResultMatchers.status().isUnauthorized())
-                .andReturn().getResponse().getStatus();
+                .param("password","1234"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn().getResponse().getContentAsString();
 
      Assertions.assertNotNull(status);
      System.out.println(status);

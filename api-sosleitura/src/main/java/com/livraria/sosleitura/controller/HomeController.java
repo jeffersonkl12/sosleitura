@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.security.auth.login.LoginException;
 import java.util.HashMap;
+import java.util.Map;
 
 @CrossOrigin
 @RequestMapping(path = "/home")
@@ -73,9 +74,14 @@ public class HomeController {
                 authenticationManager.authenticate(
                         new UsernamePasswordAuthenticationToken(new UserDetailsCustom(usuario), password));
 
+                jwtService.deleteTokenByUser(login);
                 String token = jwtService.codeJwtToken(new HashMap<>(), usuario.getLogin());
-                log.info("testando login");
-                return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, token).build();
+                String tokenRefresh = jwtService.codeJwtTokenRefresh(new HashMap<>(),usuario.getLogin());
+                Map<String,Object> response = new HashMap<>();
+                response.put("token_at",token);
+                response.put("token_rf",tokenRefresh);
+
+                return ResponseEntity.ok().body(response);
             }catch (AuthenticationException ex){
                 throw new LoginException("login invalido");
             }

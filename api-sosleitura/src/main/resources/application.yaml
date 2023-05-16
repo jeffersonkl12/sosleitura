@@ -18,6 +18,7 @@ spring:
     #init:
       #mode: always
   flyway: #flyway versionamento
+    enabled: true
     url: jdbc:mysql://127.0.0.1:3306/livraria
     user: jefferson
     password: 1234
