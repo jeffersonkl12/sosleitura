@@ -25,7 +25,7 @@ public class FilterChainCustom {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((request)->
                 request.requestMatchers("/home/**").permitAll()
-                        .requestMatchers("/ativa-email/**").permitAll()
+                        .requestMatchers("/email/**").permitAll()
                         .anyRequest().permitAll()
                  )
                 .csrf().disable()

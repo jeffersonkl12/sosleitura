@@ -4,24 +4,19 @@ import com.livraria.sosleitura.model.StatusUser;
 import com.livraria.sosleitura.model.Usuario;
 import com.livraria.sosleitura.security.TokenUsuarioConfirm;
 import com.livraria.sosleitura.security.TokenUsuarioConfirmService;
-import com.livraria.sosleitura.service.JwtService;
 import com.livraria.sosleitura.service.UsuarioService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.context.request.WebRequest;
 
 import java.time.LocalDateTime;
 
-@RequestMapping(path = "/")
+@RequestMapping(path = "/email")
 @RestController
-public class DefaultController {
+public class EmailController {
 
     @Autowired
     private TokenUsuarioConfirmService tokenService;

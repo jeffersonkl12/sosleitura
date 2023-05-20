@@ -19,6 +19,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 
 import javax.security.auth.login.LoginException;
 import java.util.HashMap;
@@ -74,7 +75,7 @@ public class HomeController {
                 authenticationManager.authenticate(
                         new UsernamePasswordAuthenticationToken(new UserDetailsCustom(usuario), password));
 
-                jwtService.deleteTokenByUser(login);
+                //jwtService.deleteTokenByUser(login);
                 String token = jwtService.codeJwtToken(new HashMap<>(), usuario.getLogin());
                 String tokenRefresh = jwtService.codeJwtTokenRefresh(new HashMap<>(),usuario.getLogin());
                 Map<String,Object> response = new HashMap<>();
@@ -86,4 +87,5 @@ public class HomeController {
                 throw new LoginException("login invalido");
             }
     }
+
 }

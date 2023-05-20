@@ -40,7 +40,7 @@ public class JwtService {
                 .setIssuer("localhost:8080")
                 .setSubject(login)
                 .setIssuedAt(new Date())
-                .setExpiration(Date.from(LocalDateTime.now().plusMinutes(1L).atZone(ZoneId.systemDefault())
+                .setExpiration(Date.from(LocalDateTime.now().plusMinutes(10L).atZone(ZoneId.systemDefault())
                         .toInstant()))
                 .signWith(getKeyCode())
                 .compact();
@@ -114,7 +114,6 @@ public class JwtService {
         TokenRefresh tokenRefresh = new TokenRefresh();
         Usuario usuario = usuarioService.buscaUsuarioByLogin(login);
 
-        tokenRefresh.setUsuario(usuario);
         tokenRefresh.setCreatAt(LocalDateTime.now());
         tokenRefresh.setExpires(LocalDateTime.now().plusHours(8L));
         tokenRefresh = repository.save(tokenRefresh);
@@ -135,10 +134,11 @@ public class JwtService {
 
     @Transactional
     public void deleteTokenByUser(String login){
-        log.info(usuarioService.buscaUsuarioByLogin(login).getLogin());
+       /* log.info(usuarioService.buscaUsuarioByLogin(login).getLogin());
         Usuario usuario = usuarioService.buscaUsuarioByLogin(login);
         if(repository.existsByUsuario(usuario)){
             repository.deleteByUsuario(usuario);
         }
+        */
     }
 }

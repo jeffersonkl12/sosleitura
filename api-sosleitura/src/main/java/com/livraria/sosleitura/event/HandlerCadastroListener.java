@@ -41,7 +41,7 @@ public class HandlerCadastroListener implements ApplicationListener<UserCadastro
             throw new RuntimeException(e);
         }
 
-        String url = "http://localhost:8080/sosleitura/ativa-email?token=".concat(tokenUsuarioConfirm.getToken());
+        String url = "http://localhost:8080/sosleitura/email/ativa-email?token=".concat(tokenUsuarioConfirm.getToken());
 
         StringBuilder conteudo = new StringBuilder();
         conteudo.append("<p>Obrigado por se cadastrar no site SOSleitura, ficamos muito felizes por isso</p>");

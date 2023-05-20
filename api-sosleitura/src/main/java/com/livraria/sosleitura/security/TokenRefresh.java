@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
 
 
 import java.time.LocalDateTime;
@@ -16,16 +18,11 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@RedisHash(value = "tokenRefresh")
 public class TokenRefresh {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    @ManyToOne
-    @JoinColumn(name = "usuario")
-    private Usuario usuario;
     private LocalDateTime expires;
-    @Column(name = "creat_at")
     private LocalDateTime creatAt;
 }
